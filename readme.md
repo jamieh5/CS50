@@ -14,7 +14,9 @@ Current Structure of the Repository
 
 CS50/
 ├── CS50x/           ← Assignments & exercises for CS50x (C, algorithms, etc.)
+
 ├── CS50P/           ← (if applicable) Python/CS50P assignments & projects  
+
 └── README.md        ← This file  
 
 What’s in Each Folder
