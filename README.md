@@ -22,7 +22,7 @@ This repository reflects my journey from foundational programming concepts to mo
 ```
 CS50/
 ├── CS50x/     ← Core CS50 (C, algorithms, memory, data structures…)
-├── CS50P/     ← Python track (if applicable)
+├── CS50P/     ← Python track
 └── README.md  ← This file
 ```
 
@@ -37,7 +37,7 @@ Contains solutions to all problem sets and assignments from the main CS50 curric
 - Data structures
 - Memory (heap, stack, pointers)
 
-### **CS50P/** *(if present)*
+### **CS50P/**
 Holds Python assignments and projects from the CS50P track.
 
 ### **Future Additions**
@@ -59,8 +59,6 @@ You may later find folders for:
 ## 🎯 Goals & Next Steps
 - Continue completing remaining CS50 weeks
 - Build and document a **final project** (in its own `project/` folder)
-- Add `DESIGN.md` for larger projects to explain architecture & decisions
-- Keep code clean, commented, and include any required `requirements.txt`
 
 ---
 
