@@ -1,5 +1,3 @@
-# Problem set: https://cs50.harvard.edu/x/psets/6/mario/more/
-
 def main():
     while True:
         try:
