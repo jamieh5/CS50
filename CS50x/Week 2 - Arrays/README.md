@@ -8,6 +8,8 @@ Readability
 
 Caesar
 
+Scrabble
+
 🛠 Topics Covered
 
 Arrays
