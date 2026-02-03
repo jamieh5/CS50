@@ -10,4 +10,4 @@ def test_validate_letters():
     assert validate("cat") == False
     assert validate("Foo") == False
     assert validate("cat.foo.cat.foo") == False
-    assert validate ("120.1.2.cat") == False
+    assert validate("120.1.2.cat") == False
