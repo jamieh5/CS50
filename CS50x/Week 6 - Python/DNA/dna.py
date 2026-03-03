@@ -6,9 +6,21 @@ def main():
     # Checking for correct command-line input
     if len(sys.argv) != 3:
         print("Wrong command-line input")
-    # TODO: Read database file into a variable
+        database = []
     
-    # TODO: Read DNA sequence file into a variable
+    # Accessing the database file and storing the data in the database arr
+    with open(sys.argv[1]) as file:
+        reader = csv.reader(file)
+        next(reader)
+        for row in reader:
+            database.append(row)
+
+    # Accessing the sequences file and storing the data in the dna arr
+    dna = []
+    with open(sys.argv[2]) as file:
+        reader = csv.reader(file)
+        for row in reader:
+            dna.append(row)
 
     # TODO: Find longest match of each STR in DNA sequence
 
