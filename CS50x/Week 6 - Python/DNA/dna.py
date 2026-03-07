@@ -10,14 +10,16 @@ def main():
     # Defining a function to read the file and saving in the variables
     def load_files(filename):
         with open(filename) as file:
-            reader = csv.reader(file)
-            return list(reader)
+            return file.read().strip()
 
     dna = load_files(sys.argv[1])
     database = load_files(sys.argv[2])
     
-
-    # TODO: Find longest match of each STR in DNA sequence
+    # Getting the counts for the consecutive runs of each STR in the DNA sequence and saving in a dictionary
+    sequences = ["AGAT", "AATG", "TATC"]
+    count_dict = {}
+    for seq in sequences:
+        count_dict[seq] = longest_match(dna, seq)
 
     # TODO: Check database for matching profiles
 
