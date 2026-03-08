@@ -3,26 +3,32 @@ import sys
 
 
 def main():
-    # Checking for correct command-line input
     if len(sys.argv) != 3:
-        print("Wrong command-line input")
-    
-    # Defining a function to read the file and saving in the variables
-    def load_files(filename):
-        with open(filename) as file:
-            return file.read().strip()
+        sys.exit("Wrong command-line input")
 
-    dna = load_files(sys.argv[1])
-    database = load_files(sys.argv[2])
-    
-    # Getting the counts for the consecutive runs of each STR in the DNA sequence and saving in a dictionary
-    sequences = ["AGAT", "AATG", "TATC"]
+    with open(sys.argv[2]) as file:
+        dna = file.read().strip()
+
+    with open(sys.argv[1]) as file:
+        reader = csv.reader(file)
+        sequences = next(reader)[1:]
+
     count_dict = {}
     for seq in sequences:
         count_dict[seq] = longest_match(dna, seq)
 
-    # TODO: Check database for matching profiles
-
+    with open(sys.argv[1]) as file:
+        database = csv.DictReader(file)
+        for person in database:
+            matched = True
+            for seq in count_dict:
+                if int(person[seq]) != count_dict[seq]:
+                    matched = False
+                    break
+            if matched == True:
+                print(person["name"])
+                sys.exit()
+        print("No match")
     return
 
 
