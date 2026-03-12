@@ -8,15 +8,11 @@ SELECT * FROM crime_scene_reports WHERE day = 28 AND month = 7 AND street = "Hum
         -- Littering took place at 16:36. No witnesses
 
 -- Looking at the witness statements
-SELECT name, transcript FROM interviews WHERE day = 28 AND month = 7
+SELECT name, transcript FROM interviews WHERE day = 28 AND month = 7 AND transcript LIKE "%bakery%"
     -- Clues found:
         -- Witness Raymond: The thief left the bakery and called someone for less than a minute. The thief is leaving fiftyville with the earliest flight and asked the other person to purchase the flight ticket
+        -- Witness Ruth: Within 10mins of the theft the thief got into a car and left
+        -- Witness Eugene: Didnt know the thiefs name, but recognized him. The thief was withdrawing money from an ATM on Leggett Street
 
 -- Looking for id for the fiftyville airport
 SELECT id FROM airports WHERE city = "Fiftyville" -- ID = 8
-
--- Looking for earliest flight from fiftyville airport
-SELECT * FROM flights WHERE day = 28 AND month = 7 AND origin_airport_id = 8
-    -- Earliest flight: at 13:49, id = 6 destination_airport_id = 5
-    -- Getting name for the destination airport
-    SELECT * FROM airports WHERE id = 5 -- Destination Airport: DFS, Dallas
