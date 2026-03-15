@@ -5,6 +5,7 @@ from PIL import Image, ImageOps
 
 def main():
     input_validating()
+    overlap_images()
 
 def input_validating():
     if len(sys.argv) > 3:
