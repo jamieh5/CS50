@@ -1,31 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang="en">
-    <head>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
-        <link href="styles.css" rel="stylesheet">
-        <title>Trivia!</title>
-        <script>
-            // TODO: Add code to check answers to questions
-        </script>
-    </head>
-    <body>
-        <div class="header">
-            <h1>Trivia!</h1>
-        </div>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet" />
+    <link href="styles.css" rel="stylesheet" />
+    <title>Trivia!</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Trivia!</h1>
+    </div>
 
-        <div class="container">
-            <div class="section">
-                <h2>Part 1: Multiple Choice </h2>
-                <hr>
-                <!-- TODO: Add multiple choice question here -->
-            </div>
-
-            <div class="section">
-                <h2>Part 2: Free Response</h2>
-                <hr>
-                <!-- TODO: Add free response question here -->
-            </div>
+    <div class="container">
+      <div class="section">
+        <h2>Part 1: Multiple Choice</h2>
+        <hr />
+        <h3 style="text-align: center">
+          Who won the 2025 Formula 1 Driver's Championship?
+        </h3>
+        <div class="container-choices">
+          <div class="choices">
+            <button class="choice">Verstappen</button>
+            <p style="visibility: hidden">Incorrect</p>
+          </div>
+          <div class="choices">
+            <button class="choice">Leclerc</button>
+            <p style="visibility: hidden">Incorrect</p>
+          </div>
+          <div class="choices">
+            <button class="choice">Norris</button>
+            <p style="visibility: hidden">Correct</p>
+          </div>
+          <div class="choices">
+            <button class="choice">Piastri</button>
+            <p style="visibility: hidden">Incorrect</p>
+          </div>
         </div>
-    </body>
+      </div>
+
+      <div class="section">
+        <h2>Part 2: Free Response</h2>
+        <hr />
+        <!-- TODO: Add free response question here -->
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
