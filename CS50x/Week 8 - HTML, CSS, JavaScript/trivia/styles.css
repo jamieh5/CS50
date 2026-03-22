@@ -94,3 +94,18 @@ input[type="text"]:hover {
   align-items: center;
   justify-content: center;
 }
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#answer {
+  margin: 10px;
+  padding-left: 10px;
+}
+
+#submit-btn {
+  height: 36.8px;
+}

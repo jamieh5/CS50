@@ -6,6 +6,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
       rel="stylesheet" />
     <link href="styles.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
     <title>Trivia!</title>
   </head>
   <body>
@@ -23,19 +24,19 @@
         <div class="container-choices">
           <div class="choices">
             <button class="choice">Verstappen</button>
-            <p style="visibility: hidden">Incorrect</p>
+            <p style="visibility: hidden">Incorrect!</p>
           </div>
           <div class="choices">
             <button class="choice">Leclerc</button>
-            <p style="visibility: hidden">Incorrect</p>
+            <p style="visibility: hidden">Incorrect!</p>
           </div>
           <div class="choices">
             <button class="choice">Norris</button>
-            <p style="visibility: hidden">Correct</p>
+            <p style="visibility: hidden">Correct!</p>
           </div>
           <div class="choices">
             <button class="choice">Piastri</button>
-            <p style="visibility: hidden">Incorrect</p>
+            <p style="visibility: hidden">Incorrect!</p>
           </div>
         </div>
       </div>
@@ -43,7 +44,18 @@
       <div class="section">
         <h2>Part 2: Free Response</h2>
         <hr />
-        <!-- TODO: Add free response question here -->
+        <h3 style="text-align: center">
+          How many races are in the 2026 Formula 1 season?
+        </h3>
+        <form>
+          <input
+            type="text"
+            id="answer"
+            placeholder="Answer"
+            autocomplete="off" />
+          <input type="submit" />
+        </form>
+        <p style="text-align: center; visibility: hidden" id="form-p"></p>
       </div>
     </div>
     <script src="script.js"></script>
