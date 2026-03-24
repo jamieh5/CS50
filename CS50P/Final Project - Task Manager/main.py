@@ -2,7 +2,7 @@ import functions
 
 def main():
     task1 = functions.get_task()
-    print(task1)
+    functions.add_tasks(task1)
 
 
 if __name__ == "__main__":

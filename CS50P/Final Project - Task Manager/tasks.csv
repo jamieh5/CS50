@@ -1,1 +1,5 @@
-id, title, due_date, priority, status, created_at
+title, due_date, priority, status, created_at
+Laundry,,low,Incompleted,2026-03-24
+Dishwasher,,low,Incompleted,2026-03-24
+Cat litter box,2026-03-25,medium,Incompleted,2026-03-24
+Studying,Today,high,Incompleted,2026-03-24
