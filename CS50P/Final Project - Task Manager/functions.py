@@ -1,6 +1,6 @@
 import csv
-import os
 from datetime import datetime
+from tabulate import tabulate
 
 class Task():
     def __init__(self, title, priority, due_date, status="Incompleted"):
@@ -40,14 +40,29 @@ def add_tasks(task):
         writer = csv.DictWriter(file, fieldnames=["title", "due_date", "priority", "status", "created_at"])
         writer.writerow(task.to_dict())
 
-def delete_tasks():
-    ...
+def completed(title):
+    with open("tasks.csv") as file:
+        reader = csv.DictReader(file, skipinitialspace=True)
+        rows = list(reader)
 
-def change_priority():
-    ...
+    found = False
+    for row in rows:
+        if row["title"] == title:
+            row["status"] = "Completed"
+            found = True
 
-def completed():
-    ...
+    if  not found:
+        raise ValueError("Wrong Title")
+
+    with open("tasks.csv", "w", newline="") as file:
+        writer = csv.DictWriter(file, fieldnames=["title", "due_date", "priority", "status", "created_at"])
+        writer.writeheader()
+        writer.writerows(rows)
 
 def list_tasks():
-   ...
+    data = []
+    with open("tasks.csv") as file:
+       reader = csv.DictReader(file, skipinitialspace=True)
+       for row in reader:
+           data.append(row)
+    print(tabulate(data[1:], data[0], tablefmt="grid"))

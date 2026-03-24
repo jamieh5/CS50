@@ -1,8 +1,7 @@
 import functions
 
 def main():
-    task1 = functions.get_task()
-    functions.add_tasks(task1)
+    functions.list_tasks()
 
 
 if __name__ == "__main__":
