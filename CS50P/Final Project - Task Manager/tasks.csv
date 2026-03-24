@@ -1,3 +1,4 @@
 title,due_date,priority,status,created_at
 Laundry,Today,low,Completed,2026-03-24
 Studying,Today,high,Completed,2026-03-24
+Trash,Today,low,Incompleted,2026-03-24
