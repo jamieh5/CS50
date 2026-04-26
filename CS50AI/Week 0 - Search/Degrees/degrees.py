@@ -92,8 +92,16 @@ def shortest_path(source, target):
     If no possible path, returns None.
     """
 
-    # TODO
-    raise NotImplementedError
+    frontier = QueueFrontier()
+    explored = set()
+
+    start = Node(source, None, None)
+    frontier.add(start)
+    while True:
+        if frontier.empty():
+            return None
+        current_node = frontier.remove()
+        explored.add(current_node)
 
 
 def person_id_for_name(name):
