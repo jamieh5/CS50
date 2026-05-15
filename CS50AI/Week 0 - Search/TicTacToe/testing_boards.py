@@ -1,14 +1,14 @@
 # File where i store all the tictactoe boards for testing
 
-board1 = [[None, None, None],
+empty_board = [[None, None, None],
          [None, None, None],
          [None, None, None]]
 
-board2 = [[None, None, None],
+board_o_turn = [[None, None, None],
          [None, "X", None],
          [None, None, None]]
 
-board3 = [[None, None, None],
+board_x_turn = [[None, None, None],
          [None, "X", None],
          [None, None, "O"]]
 
