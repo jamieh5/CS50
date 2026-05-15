@@ -12,10 +12,6 @@ board3 = [[None, None, None],
          [None, "X", None],
          [None, None, "O"]]
 
-board4 = [[None, "X", None],
-         [None, "X", None],
-         [None, None, "O"]]
-
-board5 = [[None, "X", None],
-         [None, "X", None],
-         [None, "O", "O"]]
+board_nearly_full = [["X", "O", "X"],
+                     ["O", "X", "O"],
+                     ["O", "X", None]]
