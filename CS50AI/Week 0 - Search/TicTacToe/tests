@@ -1,0 +1,6 @@
+from testing_boards import *
+from tictactoe import *
+
+def test_player():
+    assert player(board1) == "X"
+    assert player(board2) == "O"
