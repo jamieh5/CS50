@@ -47,6 +47,12 @@ def actions(board):
 def result(board, action):
     board_copy = copy.deepcopy(board)
 
+    i, j = action
+    if board_copy[i][j] != None:
+        raise Exception("Invalid action")
+    
+    board_copy[i][j] = player(board)
+    return board_copy
 
 def winner(board):
     """

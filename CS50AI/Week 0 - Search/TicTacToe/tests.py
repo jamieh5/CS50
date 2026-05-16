@@ -1,5 +1,6 @@
-from testing_boards import *
 from tictactoe import *
+
+import pytest
 
 def test_player():
     # Empty board so first player should be X
@@ -21,3 +22,52 @@ def test_actions():
 
     # Calling the board with a half empty board, returns the possible actions (empty fields)
     assert actions(board_half_full) == {(0,1),(1,0),(1,2)}
+
+def test_result():
+    assert result(empty_board, (0, 0)) == [["X", None, None],
+                                          [None, None, None],
+                                          [None, None, None]]
+    
+    # Checking if the correct player is getting added
+    assert result(board_x_turn, (0, 0)) == [["X", None, None],
+                                           [None, "X", None],
+                                           [None, None, "O"]] 
+    
+    assert result(board_o_turn, (2, 2)) == [[None, None, None],
+                                           [None, "X", None],
+                                           [None, None, "O"]]
+
+    # Checking if a deep copy was made
+    original = copy.deepcopy(empty_board)
+    result(empty_board, (0, 0))
+    assert empty_board == original
+
+    # Checking for invalid action
+    with pytest.raises(Exception):
+        result(board_full, (2,2))
+
+# All the board i use for testing
+
+empty_board = [[None, None, None],
+         [None, None, None],
+         [None, None, None]]
+
+board_o_turn = [[None, None, None],
+         [None, "X", None],
+         [None, None, None]]
+
+board_x_turn = [[None, None, None],
+         [None, "X", None],
+         [None, None, "O"]]
+
+board_nearly_full = [["X", "O", "X"],
+                     ["O", "X", "O"],
+                     ["O", "X", None]]
+
+board_full = [["X", "O", "X"],
+             ["O", "X", "O"],
+             ["O", "X", "X"]]
+
+board_half_full = [["X", None, "X"],
+         [None, "X", None],
+         ["O", "O", "O"]]
