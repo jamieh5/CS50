@@ -15,3 +15,11 @@ board_x_turn = [[None, None, None],
 board_nearly_full = [["X", "O", "X"],
                      ["O", "X", "O"],
                      ["O", "X", None]]
+
+board_full = [["X", "O", "X"],
+             ["O", "X", "O"],
+             ["O", "X", "X"]]
+
+board_half_full = [["X", None, "X"],
+         [None, "X", None],
+         ["O", "O", "O"]]
