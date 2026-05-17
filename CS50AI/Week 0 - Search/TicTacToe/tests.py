@@ -46,6 +46,12 @@ def test_result():
     with pytest.raises(Exception):
         result(board_full, (2,2))
 
+def test_winner():
+    assert winner(board_draw) == None
+    assert winner(empty_board) == None
+    assert winner(board_full) == "X"
+    assert winner(board_half_full) == "O"
+
 # All the board i use for testing
 
 empty_board = [[None, None, None],
@@ -71,3 +77,7 @@ board_full = [["X", "O", "X"],
 board_half_full = [["X", None, "X"],
          [None, "X", None],
          ["O", "O", "O"]]
+
+board_draw = [["X", "O", "X"],
+         ["O", "X", "X"],
+         ["O", "X", "O"]]
