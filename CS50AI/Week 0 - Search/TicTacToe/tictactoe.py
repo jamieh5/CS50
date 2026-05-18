@@ -55,10 +55,21 @@ def result(board, action):
     return board_copy
 
 def winner(board):
-    """
-    Returns the winner of the game, if there is one.
-    """
-    raise NotImplementedError
+    possible_combinations = (
+        # Winning combinations for each row
+        ((0, 0), (0, 1), (0, 2)),
+        ((1, 0), (1, 1), (1, 2)),
+        ((2, 0), (2, 1), (2, 2)),
+
+        # Winning combinations for each column
+        ((0, 0), (1, 0), (2, 0)),
+        ((0, 1), (1, 1), (2, 1)),
+        ((0, 2), (1, 2), (2, 2)),
+
+        # Winning combinations for each diagonal
+        ((0, 0), (1, 1), (2, 2)),
+        ((0, 2), (1, 1), (2, 0))
+    )
 
 
 def terminal(board):
