@@ -48,6 +48,10 @@ def result(board, action):
     board_copy = copy.deepcopy(board)
 
     i, j = action
+
+    if i not in range(0, 3) or j not in range(0, 3):
+        raise Exception("Out of bounds action")
+    
     if board_copy[i][j] != None:
         raise Exception("Invalid action")
     
@@ -84,14 +88,50 @@ def terminal(board):
 
 
 def utility(board):
-    """
-    Returns 1 if X has won the game, -1 if O has won, 0 otherwise.
-    """
-    raise NotImplementedError
+    result = winner(board)
+    if terminal(board):
+        if result == "X":
+            return 1
+        elif result == "O":
+            return -1
+        elif result == None:
+            return 0
 
 
-def minimax(board):
-    """
-    Returns the optimal action for the current player on the board.
-    """
-    raise NotImplementedError
+def minimax(board, is_top_level = True):
+    if terminal(board):
+        if is_top_level:
+            return None
+        else:
+            return utility(board)
+    
+    if player(board) == "X":
+        value = float("-inf")
+        best_action = None
+
+
+        for action in actions(board):
+            score = minimax(result(board, action), False)
+            if score > value:
+                best_action = action
+                value = score
+
+        if is_top_level == True:
+            return best_action
+        else:
+            return value   
+
+    if player(board) == "O":
+        value = float("inf")
+        best_action = None
+        for action in actions(board):
+            score = minimax(result(board, action), False)
+            if score < value:
+                best_action = action
+                value = score
+
+        if is_top_level == True:
+            return best_action
+        else:
+            return value
+

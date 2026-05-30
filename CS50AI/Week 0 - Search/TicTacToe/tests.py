@@ -60,6 +60,26 @@ def test_terminal():
     assert terminal(board_nearly_full) == False
     assert terminal(board_o_turn) == False
 
+def test_utility():
+    assert utility(board_draw) == 0
+    assert utility(board_full) == 1
+    assert utility(board_half_full) == -1
+
+def test_minimax():
+    # No moves left, should return None
+    assert minimax(board_draw) == None
+    assert minimax(board_full) == None
+    assert minimax(board_half_full) == None
+
+    # O should play optimally from this position
+    assert minimax(board_o_turn) is not None
+
+    # X should play optimally from this position
+    assert minimax(board_x_turn) is not None
+
+    # Only one move left, should return that cell
+    assert minimax(board_nearly_full) == (2, 2)
+
 # All the board i use for testing
 
 empty_board = [[None, None, None],
