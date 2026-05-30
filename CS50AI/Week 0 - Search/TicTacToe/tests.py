@@ -52,6 +52,14 @@ def test_winner():
     assert winner(board_full) == "X"
     assert winner(board_half_full) == "O"
 
+def test_terminal():
+    assert terminal(board_draw) == True
+    assert terminal(empty_board) == False
+    assert terminal(board_full) == True
+    assert terminal(board_half_full) == True
+    assert terminal(board_nearly_full) == False
+    assert terminal(board_o_turn) == False
+
 # All the board i use for testing
 
 empty_board = [[None, None, None],

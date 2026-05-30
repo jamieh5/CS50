@@ -70,13 +70,17 @@ def winner(board):
         ((0, 0), (1, 1), (2, 2)),
         ((0, 2), (1, 1), (2, 0))
     )
+    for combination in possible_combinations:
+        current_check = set()
+        for (x, y) in combination:
+            current_check.add(board[x][y])
 
+        if len(current_check) == 1 and next(iter(current_check)) != EMPTY:
+            return board[x][y]
+    return None
 
 def terminal(board):
-    """
-    Returns True if game is over, False otherwise.
-    """
-    raise NotImplementedError
+    return len(actions(board)) == 0 or winner(board) is not None
 
 
 def utility(board):
