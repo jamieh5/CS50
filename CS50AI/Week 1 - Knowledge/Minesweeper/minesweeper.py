@@ -180,6 +180,17 @@ class MinesweeperAI():
         self.moves_made.add(cell)
         self.mark_safe(cell)
 
+        cell_neighbors = set()
+
+        for i in range(cell[0] - 1, cell[0] + 2):
+            for j in range(cell[1] - 1, cell[1] + 2):
+                if (i, j) == cell:
+                    continue
+
+                if 0 <= i < self.height and 0 <= j < self.width:
+                    cell_neighbors.add((i,j))
+
+
     def make_safe_move(self):
         """
         Returns a safe cell to choose on the Minesweeper board.
