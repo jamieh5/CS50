@@ -171,7 +171,7 @@ class MinesweeperAI():
             1) mark the cell as a move that has been made. Done
             2) mark the cell as safe. Done
             3) add a new sentence to the AI's knowledge base
-               based on the value of `cell` and `count`
+               based on the value of `cell` and `count`. Done
             4) mark any additional cells as safe or as mines
                if it can be concluded based on the AI's knowledge base
             5) add any new sentences to the AI's knowledge base
@@ -189,6 +189,20 @@ class MinesweeperAI():
 
                 if 0 <= i < self.height and 0 <= j < self.width:
                     cell_neighbors.add((i,j))
+
+        new_count = count
+        new_cells = set()
+
+        for neighbor in cell_neighbors:
+            if neighbor in self.safes:
+                continue
+            elif neighbor in self.mines:
+                new_count -= 1
+            else:
+                new_cells.add(neighbor)
+
+        new_sentence = Sentence(new_cells, new_count)
+        self.knowledge.append(new_sentence)
 
 
     def make_safe_move(self):
