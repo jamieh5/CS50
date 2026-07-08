@@ -163,20 +163,6 @@ class MinesweeperAI():
             sentence.mark_safe(cell)
 
     def add_knowledge(self, cell, count):
-        """
-        Called when the Minesweeper board tells us, for a given
-        safe cell, how many neighboring cells have mines in them.
-
-        This function should:
-            1) mark the cell as a move that has been made. Done
-            2) mark the cell as safe. Done
-            3) add a new sentence to the AI's knowledge base
-               based on the value of `cell` and `count`. Done
-            4) mark any additional cells as safe or as mines
-               if it can be concluded based on the AI's knowledge base
-            5) add any new sentences to the AI's knowledge base
-               if they can be inferred from existing knowledge
-        """
         self.moves_made.add(cell)
         self.mark_safe(cell)
 
@@ -212,6 +198,18 @@ class MinesweeperAI():
 
             for cell in sentence.known_mines().copy():
                 self.mark_mine(cell)
+
+        for sentence1 in knowledge_copy:
+            for sentence2 in knowledge_copy:
+                if sentence1 == sentence2:
+                    continue
+                
+                if sentence1.cells <= sentence2.cells:
+                    new_cells = sentence2.cells - sentence1.cells
+                    new_count = sentence2.count - sentence1.count
+
+                    new_sentence = Sentence(new_cells, new_count)
+                    self.knowledge.append(new_sentence)
 
 
     def make_safe_move(self):
