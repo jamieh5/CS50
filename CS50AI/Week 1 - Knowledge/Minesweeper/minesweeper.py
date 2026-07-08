@@ -206,11 +206,12 @@ class MinesweeperAI():
 
         knowledge_copy = self.knowledge.copy()
         for sentence in knowledge_copy:
-            if len(knowledge_copy[sentence]) == knowledge_copy[sentence].count:
-                ...
 
-            if knowledge_copy[sentence].count == 0:
-                ... 
+            for cell in sentence.known_safes().copy():
+                self.mark_safe(cell)
+
+            for cell in sentence.known_mines().copy():
+                self.mark_mine(cell)
 
 
     def make_safe_move(self):
