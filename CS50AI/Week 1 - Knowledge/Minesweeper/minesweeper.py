@@ -204,6 +204,14 @@ class MinesweeperAI():
         new_sentence = Sentence(new_cells, new_count)
         self.knowledge.append(new_sentence)
 
+        knowledge_copy = self.knowledge.copy()
+        for sentence in knowledge_copy:
+            if len(knowledge_copy[sentence]) == knowledge_copy[sentence].count:
+                ...
+
+            if knowledge_copy[sentence].count == 0:
+                ... 
+
 
     def make_safe_move(self):
         """
