@@ -190,26 +190,37 @@ class MinesweeperAI():
         new_sentence = Sentence(new_cells, new_count)
         self.knowledge.append(new_sentence)
 
-        knowledge_copy = self.knowledge.copy()
-        for sentence in knowledge_copy:
+        while True:
+            knowledge_before = len(self.knowledge)
+            mines_before = len(self.mines)
+            safes_before = len(self.safes)
 
-            for cell in sentence.known_safes().copy():
-                self.mark_safe(cell)
+            knowledge_copy = self.knowledge.copy()
+            for sentence in knowledge_copy:
 
-            for cell in sentence.known_mines().copy():
-                self.mark_mine(cell)
+                for cell in sentence.known_safes().copy():
+                    self.mark_safe(cell)
 
-        for sentence1 in knowledge_copy:
-            for sentence2 in knowledge_copy:
-                if sentence1 == sentence2:
-                    continue
-                
-                if sentence1.cells <= sentence2.cells:
-                    new_cells = sentence2.cells - sentence1.cells
-                    new_count = sentence2.count - sentence1.count
+                for cell in sentence.known_mines().copy():
+                    self.mark_mine(cell)
 
-                    new_sentence = Sentence(new_cells, new_count)
-                    self.knowledge.append(new_sentence)
+            for sentence1 in knowledge_copy:
+                for sentence2 in knowledge_copy:
+                    if sentence1 == sentence2:
+                        continue
+
+                    if sentence1.cells <= sentence2.cells:
+                        new_cells = sentence2.cells - sentence1.cells
+                        new_count = sentence2.count - sentence1.count
+
+                        if new_cells and Sentence(new_cells, new_count) not in self.knowledge:
+                            new_sentence = Sentence(new_cells, new_count)
+                            self.knowledge.append(new_sentence)
+
+            if (len(self.knowledge) == knowledge_before and
+                len(self.mines) == mines_before and
+                len(self.safes) == safes_before):
+                break
 
 
     def make_safe_move(self):
