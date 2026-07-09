@@ -224,15 +224,11 @@ class MinesweeperAI():
 
 
     def make_safe_move(self):
-        """
-        Returns a safe cell to choose on the Minesweeper board.
-        The move must be known to be safe, and not already a move
-        that has been made.
-
-        This function may use the knowledge in self.mines, self.safes
-        and self.moves_made, but should not modify any of those values.
-        """
-        raise NotImplementedError
+        new_safes = self.safes - self.moves_made
+        if len(new_safes) <= 0:
+            return None
+        else:
+            return list(new_safes)[0]
 
     def make_random_move(self):
         """
