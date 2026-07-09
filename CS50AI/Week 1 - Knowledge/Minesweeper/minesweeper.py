@@ -231,10 +231,14 @@ class MinesweeperAI():
             return list(new_safes)[0]
 
     def make_random_move(self):
-        """
-        Returns a move to make on the Minesweeper board.
-        Should choose randomly among cells that:
-            1) have not already been chosen, and
-            2) are not known to be mines
-        """
-        raise NotImplementedError
+        unknown_moves = set()
+        for i in range(0, self.width):
+            for j in range(0, self.height):
+                unknown_moves.add((i, j))
+
+        unknown_moves = unknown_moves - self.mines - self.moves_made
+
+        if len(unknown_moves) != 0:
+            return random.choice(list(unknown_moves))
+        else:
+            return None
