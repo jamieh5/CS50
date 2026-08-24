@@ -62,11 +62,24 @@ def transition_model(corpus, page, damping_factor):
     # Adding every file into the new dict and given them a probality of 0
     for file in corpus:
         dict_probality[file] = 0
-
+ 
     # Calcultating the random probality and adding it to every key inside dict_probality
     random_probabilty = (1 - damping_factor) / len(corpus)
     for key in dict_probality:
         dict_probality[key] += random_probabilty
+    # Handling the edge case if pages doesnt link to anything
+    if len(corpus[page]) == 0:
+        empty_probablity = damping_factor / len(corpus)
+        for key in dict_probality:
+            dict_probality[key] += empty_probablity
+    else:
+        # Calculation the probality and adding it to the keys
+        probality = damping_factor / len(corpus[page])
+        for key in dict_probality:
+            if key in corpus[page]:
+                dict_probality[key] += probality
+    
+    return dict_probality
 
 def sample_pagerank(corpus, damping_factor, n):
     """
