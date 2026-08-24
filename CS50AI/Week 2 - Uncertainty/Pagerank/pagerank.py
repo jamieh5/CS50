@@ -57,8 +57,16 @@ def transition_model(corpus, page, damping_factor):
     linked to by `page`. With probability `1 - damping_factor`, choose
     a link at random chosen from all pages in the corpus.
     """
-    raise NotImplementedError
+    dict_probality = {}
 
+    # Adding every file into the new dict and given them a probality of 0
+    for file in corpus:
+        dict_probality[file] = 0
+
+    # Calcultating the random probality and adding it to every key inside dict_probality
+    random_probabilty = (1 - damping_factor) / len(corpus)
+    for key in dict_probality:
+        dict_probality[key] += random_probabilty
 
 def sample_pagerank(corpus, damping_factor, n):
     """
